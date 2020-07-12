@@ -1,0 +1,6 @@
+C:\Users\Chuck\AppData\Local\Temporary Projects\Port Check\bin\Debug\Port Check.exe
+C:\Users\Chuck\AppData\Local\Temporary Projects\Port Check\bin\Debug\Port Check.pdb
+C:\Users\Chuck\AppData\Local\Temporary Projects\Port Check\obj\x86\Debug\Port Check.exe
+C:\Users\Chuck\AppData\Local\Temporary Projects\Port Check\obj\x86\Debug\Port Check.pdb
+C:\Users\Chuck\Desktop\Port Check Files\Port Check\Port Check\obj\x86\Debug\Port Check.exe
+C:\Users\Chuck\Desktop\Port Check Files\Port Check\Port Check\obj\x86\Debug\Port Check.pdb
