@@ -1,2 +1,2 @@
 # PortCheck
-Simple tcp port checker!
+Simple TCP port checker!
