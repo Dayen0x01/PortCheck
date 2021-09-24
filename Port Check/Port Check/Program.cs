@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-// Import
-using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using System.Threading;
 
 namespace Port_Check
 {
@@ -24,10 +18,10 @@ namespace Port_Check
         }
         static void CheckTargetStatus(string URL)
         {
-            var ping = new System.Net.NetworkInformation.Ping();
+            var ping = new Ping();
             var result = ping.Send(URL);
 
-            if (result.Status != System.Net.NetworkInformation.IPStatus.Success)
+            if (result.Status != IPStatus.Success)
             {
                 Console.WriteLine("[!] Target Offline!");
             }
@@ -69,7 +63,7 @@ namespace Port_Check
 
             Console.WriteLine("[*] Select your target: ");
 
-            string Target = Console.ReadLine().Replace("http://", "").Replace("/", "");
+            string Target = Console.ReadLine().Replace("http://", "").Replace("/", "").Replace("https://", "");
 
             Console.WriteLine("[!] Checking Target Status...");
             CheckTargetStatus(Target);
