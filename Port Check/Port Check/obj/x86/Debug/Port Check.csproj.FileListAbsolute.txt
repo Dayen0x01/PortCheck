@@ -4,3 +4,9 @@ C:\Users\Chuck\AppData\Local\Temporary Projects\Port Check\obj\x86\Debug\Port Ch
 C:\Users\Chuck\AppData\Local\Temporary Projects\Port Check\obj\x86\Debug\Port Check.pdb
 C:\Users\Chuck\Desktop\Port Check Files\Port Check\Port Check\obj\x86\Debug\Port Check.exe
 C:\Users\Chuck\Desktop\Port Check Files\Port Check\Port Check\obj\x86\Debug\Port Check.pdb
+C:\Users\User\Desktop\PortChecker\PortCheck\Port Check\Port Check\bin\Debug\Port Check.exe
+C:\Users\User\Desktop\PortChecker\PortCheck\Port Check\Port Check\bin\Debug\Port Check.pdb
+C:\Users\User\Desktop\PortChecker\PortCheck\Port Check\Port Check\obj\x86\Debug\Port Check.csprojAssemblyReference.cache
+C:\Users\User\Desktop\PortChecker\PortCheck\Port Check\Port Check\obj\x86\Debug\Port Check.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\PortChecker\PortCheck\Port Check\Port Check\obj\x86\Debug\Port Check.exe
+C:\Users\User\Desktop\PortChecker\PortCheck\Port Check\Port Check\obj\x86\Debug\Port Check.pdb

@@ -12,57 +12,70 @@ namespace Port_Check
 {
     class Program
     {
-        static void Main(string[] args)
+        static void DrawLogo()
         {
-            // Seta o title do console
-            Console.Title = "Check Port";
-            // Escreve no console
-            Console.Write("-------------------------------------------------------------------------------\n");
-            Console.Write("################################# CHECK PORT ##################################\n");
-            Console.Write("-------------------------------------------------------------------------------\n");
-            Console.Write("< " + DateTime.Now.ToLongTimeString() + " > " + "Created by Ney Damé\n");
-            // Pergunta o Target
-            Console.Write("< " + DateTime.Now.ToLongTimeString() + " > " + "Your Target: ");
-            // Seta uma variável de tipo texto e remove o http e etc...
-            string Target = Console.ReadLine().Replace("http://", "").Replace("/", "");
-            Console.Write("< " + DateTime.Now.ToLongTimeString() + " > " + "Checking Target Status...\n");
-            // Verifica se o target está online
+            Console.WriteLine(@"______               _    _____  _                  _                ");
+            Console.WriteLine(@"| ___ \             | |  /  __ \| |                | |               ");
+            Console.WriteLine(@"| |_/ /  ___   _ __ | |_ | /  \/| |__    ___   ___ | | __  ___  _ __ ");
+            Console.WriteLine(@"|  __/  / _ \ | '__|| __|| |    | '_ \  / _ \ / __|| |/ / / _ \| '__|");
+            Console.WriteLine(@"| |    | (_) || |   | |_ | \__/\| | | ||  __/| (__ |   < |  __/| |   ");
+            Console.WriteLine(@"\_|     \___/ |_|    \__| \____/|_| |_| \___| \___||_|\_\ \___||_|   ");
+            Console.WriteLine(@"                                              created by Dayen0x01   ");
+        }
+        static void CheckTargetStatus(string URL)
+        {
             var ping = new System.Net.NetworkInformation.Ping();
-            var result = ping.Send(Target);
+            var result = ping.Send(URL);
+
             if (result.Status != System.Net.NetworkInformation.IPStatus.Success)
             {
-                Console.Write("< " + DateTime.Now.ToLongTimeString() + " > " + "Target Offline!\n");
+                Console.WriteLine("[!] Target Offline!");
             }
             else
             {
-                Console.Write("< " + DateTime.Now.ToLongTimeString() + " > " + "Target Online!\n");
-                // Pergunta as portas que deseja checar
-                Console.Write("< " + DateTime.Now.ToLongTimeString() + " > " + "Select Ports: ");
-                // Cria um array com as portas
-                string[] Ports = Console.ReadLine().Split(',');
-                // Seta variável de tipo inteiro
-                int ArrayIndice = 0;
-                // Cria um loop para verificar todas as portas
-                while (ArrayIndice != Ports.Count())
+                Console.WriteLine("[!] Target Online!");
+                PortScanner(URL);
+            }
+        }
+        static void PortScanner(string URL)
+        {
+            Console.WriteLine("[*] Select ports to scan... (e.g 8080,21,7172)");
+
+            string[] Ports = Console.ReadLine().Split(',');
+
+            foreach(string port in Ports)
+            {
+                int currentPort = int.Parse(port);
+
+                using (TcpClient TCPClient = new TcpClient())
                 {
-                    using (TcpClient TCPClient = new TcpClient())
+                    try
                     {
-                        try
-                        {
-                            TCPClient.Connect(Target, Convert.ToInt32(Ports[ArrayIndice]));
-                            Console.Write("< " + DateTime.Now.ToLongTimeString() + " > " + Ports[ArrayIndice] + " Is Open" + Environment.NewLine);
-                            ArrayIndice += 1;
-                        }
-                        catch (Exception)
-                        {
-                            Console.Write("< " + DateTime.Now.ToLongTimeString() + " > " + Ports[ArrayIndice] + " Is Closed" + Environment.NewLine);
-                            ArrayIndice += 1;
-                        }
+                        TCPClient.Connect(URL, currentPort);
+                        Console.WriteLine("[*] {0} is openned!", port);
                     }
-                    Thread.Sleep(1000);
+                    catch (Exception)
+                    {
+                        Console.WriteLine("[*] {0} is closed!", port);
+                    }
                 }
             }
-            Console.Write("< " + DateTime.Now.ToLongTimeString() + " > " + "Finished Checking!");
+        }
+        static void Main(string[] args)
+        {
+            Console.Title = "Port Checker";
+
+            DrawLogo();
+
+            Console.WriteLine("[*] Select your target: ");
+
+            string Target = Console.ReadLine().Replace("http://", "").Replace("/", "");
+
+            Console.WriteLine("[!] Checking Target Status...");
+            CheckTargetStatus(Target);
+
+              
+            Console.WriteLine("[!] Finished Checking!");
             Console.ReadLine();
         }
     }
